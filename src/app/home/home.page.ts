@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 @Component({
@@ -8,6 +9,16 @@ import { IonicModule } from '@ionic/angular';
   standalone: true,
   imports: [IonicModule],
 })
-export class HomePage {
-  constructor() {}
+export class HomePage implements OnInit {
+  text = '';
+
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    this.route.params.subscribe((params) => {
+      if (params['text']) {
+        this.text = params['text'];
+      }
+    });
+  }
 }
