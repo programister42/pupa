@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "ionic.pupa",
+      "sha256_cert_fingerprints": [
+        "DC:7D:C7:60:98:85:DC:AC:66:BE:4D:E9:84:64:C3:0F:68:92:29:BE:58:81:27:D2:98:3C:AA:EA:45:66:42:F6"
+      ]
+    }
+  }
+]
