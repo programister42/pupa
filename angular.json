@@ -38,7 +38,7 @@
               {
                 "glob": "assetlinks.json",
                 "input": "src",
-                "output": "./.well-known/assetlinks.json"
+                "output": "./.well-known"
               }
             ],
             "styles": ["src/theme/variables.scss", "src/global.scss"],
