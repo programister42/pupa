@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">pupa</string>
-    <string name="title_activity_main">pupa</string>
-    <string name="package_name">ionic.pupa</string>
-    <string name="custom_url_scheme">ionic.pupa</string>
+  <string name="app_name">pupa</string>
+  <string name="title_activity_main">pupa</string>
+  <string name="package_name">ionic.pupa</string>
+  <string name="custom_url_scheme">ionic.pupa</string>
 </resources>

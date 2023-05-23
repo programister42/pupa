@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools">
+  <!-- Permissions -->
+  <uses-permission android:name="android.permission.INTERNET" />
 
   <application
     android:allowBackup="true"
@@ -8,7 +11,15 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
-
+    <activity
+      android:name=".LaunchAppActivity"
+      android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.PROCESS_TEXT" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <data android:mimeType="text/plain" />
+      </intent-filter>
+    </activity>
     <activity
       android:name=".MainActivity"
       android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
@@ -16,23 +27,22 @@
       android:label="@string/title_activity_main"
       android:launchMode="singleTask"
       android:theme="@style/AppTheme.NoActionBarLaunch">
-
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
+
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
 
-      <intent-filter android:autoVerify="true">
+      <intent-filter
+        android:autoVerify="true"
+        tools:targetApi="m">
         <action android:name="android.intent.action.VIEW" />
 
         <category android:name="android.intent.category.DEFAULT" />
         <category android:name="android.intent.category.BROWSABLE" />
 
-        <data
-          android:host="pupa-and-lupa.web.app"
-          android:scheme="https" />
+        <data android:scheme="@string/custom_url_scheme" />
       </intent-filter>
-
     </activity>
 
     <provider
@@ -42,11 +52,8 @@
       android:grantUriPermissions="true">
       <meta-data
         android:name="android.support.FILE_PROVIDER_PATHS"
-        android:resource="@xml/file_paths"></meta-data>
+        android:resource="@xml/file_paths" />
     </provider>
   </application>
 
-  <!-- Permissions -->
-
-  <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
