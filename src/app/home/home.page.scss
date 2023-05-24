@@ -1,11 +1,34 @@
+@property --x {
+  syntax: "<percentage>";
+  initial-value: 50%;
+  inherits: false;
+}
+
+@property --y {
+  syntax: "<percentage>";
+  initial-value: 50%;
+  inherits: false;
+}
+
 #container {
   text-align: center;
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  transition: --x 5s linear, --y 5s linear;
+
+  background: radial-gradient(
+    circle at var(--x) var(--y),
+    rgba(229, 97, 42, 1) 0%,
+    rgba(232, 129, 47, 1) 40%,
+    rgba(236, 160, 53, 1) 60%,
+    rgba(239, 192, 58, 1) 100%
+  );
 }
 
 #container strong {

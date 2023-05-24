@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
@@ -10,6 +10,8 @@ import { IonicModule } from '@ionic/angular';
   imports: [IonicModule],
 })
 export class HomePage implements OnInit {
+  @ViewChild('container', { static: true }) container!: ElementRef;
+
   text = '';
 
   constructor(private route: ActivatedRoute) {}
@@ -20,5 +22,16 @@ export class HomePage implements OnInit {
         this.text = params['text'];
       }
     });
+
+    this.animateBackground();
+  }
+
+  animateBackground() {
+    setInterval(() => {
+      const x = Math.random() * 100;
+      const y = Math.random() * 100;
+      this.container.nativeElement.style.setProperty('--x', `${x}%`);
+      this.container.nativeElement.style.setProperty('--y', `${y}%`);
+    }, 5000);
   }
 }
