@@ -11,41 +11,16 @@
 }
 
 #container {
-  text-align: center;
-
   height: 100%;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 
   transition: --x 5s linear, --y 5s linear;
 
   background: radial-gradient(
-    circle at var(--x) var(--y),
-    rgba(229, 97, 42, 1) 0%,
-    rgba(232, 129, 47, 1) 40%,
-    rgba(236, 160, 53, 1) 60%,
-    rgba(239, 192, 58, 1) 100%
-  );
-}
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-  padding-inline: 16px;
-}
-
-#container a {
-  text-decoration: none;
+      circle at var(--x) var(--y),
+      rgba(229, 97, 42, 0.9) 0%,
+      rgba(232, 129, 47, 0.9) 40%,
+      rgba(236, 160, 53, 0.9) 60%,
+      rgba(239, 192, 58, 0.9) 100%
+    ),
+    url("../../assets/noize.svg");
 }
