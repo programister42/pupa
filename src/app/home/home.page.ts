@@ -14,6 +14,17 @@ export class HomePage implements OnInit {
 
   text = '';
 
+  bgChangeSpeed = 3000;
+
+  bgMoveSpeedModifier = 0.4;
+
+  bgMooveDirection = 135;
+
+  bgCoordinates = {
+    x: 0,
+    y: 0,
+  };
+
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
@@ -28,10 +39,56 @@ export class HomePage implements OnInit {
 
   animateBackground() {
     setInterval(() => {
-      const x = Math.random() * 100;
-      const y = Math.random() * 100;
-      this.container.nativeElement.style.setProperty('--x', `${x}%`);
-      this.container.nativeElement.style.setProperty('--y', `${y}%`);
-    }, 5000);
+      if (Math.random() > 0.5) {
+        this.changeDirection();
+      }
+    }, 1000);
+
+    this.moveBackground();
+  }
+
+  changeDirection() {
+    this.bgMooveDirection = Math.random() * 360;
+  }
+
+  moveBackground() {
+    requestAnimationFrame(() => {
+      this.bgCoordinates.x = Math.min(
+        Math.max(
+          this.bgCoordinates.x +
+            Math.cos(this.bgMooveDirection) * this.bgMoveSpeedModifier,
+          0
+        ),
+        100
+      );
+      this.bgCoordinates.y = Math.min(
+        Math.max(
+          this.bgCoordinates.y +
+            Math.sin(this.bgMooveDirection) * this.bgMoveSpeedModifier,
+          0
+        ),
+        100
+      );
+
+      if (
+        this.bgCoordinates.x === 0 ||
+        this.bgCoordinates.x === 100 ||
+        this.bgCoordinates.y === 0 ||
+        this.bgCoordinates.y === 100
+      ) {
+        this.changeDirection();
+      }
+
+      this.container.nativeElement.style.setProperty(
+        '--x',
+        `${this.bgCoordinates.x}%`
+      );
+      this.container.nativeElement.style.setProperty(
+        '--y',
+        `${this.bgCoordinates.y}%`
+      );
+
+      this.moveBackground();
+    });
   }
 }
